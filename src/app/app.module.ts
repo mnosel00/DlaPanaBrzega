@@ -26,7 +26,7 @@ import { ProjectService } from './services/project.service';
     CreateTaskComponentComponent,
     EditTaskComponentComponent
   ],
-  imports: [
+  imports: [ 
     BrowserModule,
     HttpClientModule,
     AppRoutingModule

@@ -10,5 +10,4 @@ export interface Functionality {
     owner : string;
     status : WorkStatus;
 
-    // Inne właściwości projektu
   }
