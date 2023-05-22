@@ -1,7 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CreateProjectComponentComponent } from './create-project-component/create-project-component.component';
+import { from } from 'rxjs';
+import { EditProjectComponentComponent } from './edit-project-component/edit-project-component.component';
+import { ProjectDetailsComponentComponent } from './project-details-component/project-details-component.component';
+import { ProjectListComponentComponent } from './project-list-component/project-list-component.component';
+import { DeleteProjectComponentComponent } from './delete-project-component/delete-project-component.component';
 
-const routes: Routes = [];
+
+const routes: Routes = [
+  {path:"create-project",component:CreateProjectComponentComponent},
+  {path:"edit-project/:id",component:EditProjectComponentComponent},
+  {path:"project-details/:id",component:ProjectDetailsComponentComponent},
+  {path:"project-list",component:ProjectListComponentComponent},
+  {path:"delete-project/:id",component:DeleteProjectComponentComponent}
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
