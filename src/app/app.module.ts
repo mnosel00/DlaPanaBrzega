@@ -13,6 +13,7 @@ import { CreateTaskComponentComponent } from './create-task-component/create-tas
 import { EditTaskComponentComponent } from './edit-task-component/edit-task-component.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProjectService } from './services/project.service';
+import { DeleteProjectComponentComponent } from './delete-project-component/delete-project-component.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProjectService } from './services/project.service';
     CreateFunctionalityComponentComponent,
     EditFunctionalityComponentComponent,
     CreateTaskComponentComponent,
-    EditTaskComponentComponent
+    EditTaskComponentComponent,
+    DeleteProjectComponentComponent
   ],
   imports: [ 
     BrowserModule,
