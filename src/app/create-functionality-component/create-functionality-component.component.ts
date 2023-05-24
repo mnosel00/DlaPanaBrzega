@@ -5,6 +5,7 @@ import { ProjectService } from '../services/project.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Project } from '../interfaces/project.interface';
 import { Functionality } from '../interfaces/functionality.interface';
+import { FunctionalityService } from '../services/functionality.service';
 
 @Component({
   selector: 'app-create-functionality-component',
@@ -20,6 +21,7 @@ export class CreateFunctionalityComponentComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private projectService : ProjectService,
+    private functionalityService : FunctionalityService,
     private snackBar: MatSnackBar,
     ) 
     {
@@ -66,7 +68,7 @@ export class CreateFunctionalityComponentComponent implements OnInit {
         status: this.functionalityForm.value.status
       };
 
-      this.projectService.createFunctionality(functionality).subscribe(
+      this.functionalityService.createFunctionality(functionality).subscribe(
         () => {
           console.log(functionality)
           this.snackBar.open('Funkcjonalność została utworzona', 'OK', {

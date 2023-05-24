@@ -18,13 +18,25 @@ import { Role } from '../enums/role.enum';
 
   export class ProjectService {
 
-    private projects: Project[] =[];
-    private functionalities: Functionality[] =[];
+    private localStorageKey = 'projects';
+    private projects: Project[] = [];
     private tasks: Task[] =[];
     private users: User[] = [];
+    
+    private loadProjectsFromLocalStorage(): void {
+      const projectsData = localStorage.getItem(this.localStorageKey);
+      if (projectsData) {
+        this.projects = JSON.parse(projectsData);
+      }
+    }
+  
+    private saveProjectsToLocalStorage(): void {
+      localStorage.setItem(this.localStorageKey, JSON.stringify(this.projects));
+    }
 
 
     constructor() {
+      this.loadProjectsFromLocalStorage();
     }
   
     // PROJEKT
@@ -34,82 +46,39 @@ import { Role } from '../enums/role.enum';
   
     createProject(project: Project): Observable<Project> {
       this.projects.push(project);
+      this.saveProjectsToLocalStorage();
       return of(project);
     }
 
     updateProject(project: Project): Observable<Project> {
-      const projectToUpdate = this.projects.find(p => p.name === project.name);
+    const projectToUpdate = this.projects.find(p => p.name === project.name);
 
-      if (projectToUpdate) 
-      {
-        projectToUpdate.name = project.name;
-        projectToUpdate.description = project.description;
-        return of(projectToUpdate);
-      } 
-      else 
-      {
-        return of();
-      }
+    if (projectToUpdate) 
+    {
+      projectToUpdate.name = project.name;
+      projectToUpdate.description = project.description;
+      this.saveProjectsToLocalStorage();
+      return of(projectToUpdate);
+    } 
+    else 
+    {
+      return of();
     }
+  }
   
     deleteProject(projectName: string): Observable<boolean> {
       const projectToDeleteIndex = this.projects.findIndex(p => p.name === projectName);
 
-      if (projectToDeleteIndex !== -1) 
-      {
-        this.projects.splice(projectToDeleteIndex, 1);
-        return of(true)
-      }
-      else
-      {
-        return of(false)
-      }
+    if (projectToDeleteIndex !== -1) {
+      this.projects.splice(projectToDeleteIndex, 1);
+      this.saveProjectsToLocalStorage();
+      return of(true);
+    } 
+    else 
+    {
+      return of(false);
     }
-
-
-    //FUNKCJONALNOSCI
-    getFunctionalities(): Observable<Functionality[]>{
-      return of(this.functionalities);
     }
-    
-    createFunctionality(functionality:Functionality): Observable<Functionality> {
-      this.functionalities.push(functionality);
-      return of(functionality)
-    }
-
-    updateFunctionality(functionality:Functionality): Observable<Functionality> {
-      const functionalityToUpdate = this.functionalities.find(p=>p.name === functionality.name);
-
-      if(functionalityToUpdate)
-      {
-        functionalityToUpdate.name = functionality.name
-        functionalityToUpdate.description = functionality.description
-        functionalityToUpdate.priority = functionality.priority
-        functionalityToUpdate.project = functionality.project
-        functionalityToUpdate.owner = functionality.owner
-        functionalityToUpdate.status = functionality.status
-        return of(functionalityToUpdate)
-      }
-      else
-      {
-        return of();
-      }
-    }
-
-    deleteFunctionality(functionalityName: string): Observable<boolean> {
-      const index = this.functionalities.findIndex(f => f.name === functionalityName);
-  
-      if (index !== -1) 
-      {
-        this.functionalities.splice(index, 1);
-        return of(true);
-      } 
-      else 
-      {
-        return of(false);
-      }
-    }
-
 
     //UZYTKOWNICY
     getUsers(): Observable<User[]>{

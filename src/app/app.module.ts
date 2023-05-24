@@ -23,6 +23,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
+import { FunctionalityService } from './services/functionality.service';
 
 
 
@@ -56,7 +57,8 @@ import { MatSelectModule } from '@angular/material/select';
   ],
   
   providers: [
-    ProjectService
+    ProjectService,
+    FunctionalityService
   ],
   bootstrap: [AppComponent]
 })
