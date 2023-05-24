@@ -13,7 +13,8 @@ const routes: Routes = [
   {path:"edit-project/:id",component:EditProjectComponentComponent},
   {path:"project-details/:id",component:ProjectDetailsComponentComponent},
   {path:"project-list",component:ProjectListComponentComponent},
-  {path:"delete-project/:id",component:DeleteProjectComponentComponent}
+  {path:"delete-project/:id",component:DeleteProjectComponentComponent},
+  {path:"",redirectTo:"project-list", pathMatch:"full"}
 
 ];
 

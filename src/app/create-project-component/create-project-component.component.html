@@ -1,1 +1,28 @@
-<p>create-project-component works!</p>
+<form [formGroup]="projectForm" (ngSubmit)="createProject()">
+  <mat-form-field>
+    <input
+      matInput
+      formControlName="name"
+      placeholder="Nazwa projektu"
+      required
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea
+      matInput
+      formControlName="description"
+      placeholder="Opis projektu"
+      required
+    ></textarea>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="projectForm.invalid"
+  >
+    Utwórz projekt
+  </button>
+</form>

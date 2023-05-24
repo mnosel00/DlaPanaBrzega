@@ -14,6 +14,15 @@ import { EditTaskComponentComponent } from './edit-task-component/edit-task-comp
 import { HttpClientModule } from '@angular/common/http';
 import { ProjectService } from './services/project.service';
 import { DeleteProjectComponentComponent } from './delete-project-component/delete-project-component.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +40,16 @@ import { DeleteProjectComponentComponent } from './delete-project-component/dele
   imports: [ 
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatButtonModule,
+    MatSnackBarModule ,
+    BrowserAnimationsModule
   ],
   providers: [
     ProjectService
