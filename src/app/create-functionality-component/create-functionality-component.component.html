@@ -1,1 +1,64 @@
-<p>create-functionality-component works!</p>
+<form [formGroup]="functionalityForm" (ngSubmit)="createFunctionality()">
+  <mat-form-field>
+    <input
+      matInput
+      formControlName="name"
+      placeholder="Nazwa funkcjonalności"
+      required
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea
+      matInput
+      formControlName="description"
+      placeholder="Opis funkcjonalnosci"
+      required
+    ></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea
+      matInput
+      formControlName="priority"
+      placeholder="Piorytet"
+      required
+    ></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Wybierz projekt</mat-label>
+    <mat-select formControlName="projectName">
+      <mat-option *ngFor="let project of projectOptions" [value]="project">
+        {{ project.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea
+      matInput
+      formControlName="owner"
+      placeholder="Wlasciciel"
+      required
+    ></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      <mat-option *ngFor="let value of enumValues" [value]="value">
+        {{ value }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="functionalityForm.invalid"
+  >
+    Utwórz Funckcjonalność
+  </button>
+</form>

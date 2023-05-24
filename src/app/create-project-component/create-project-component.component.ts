@@ -46,6 +46,9 @@ export class CreateProjectComponentComponent implements OnInit {
               console.log(project)
               this.snackBar.open('Projekt utworzony !', 'OK', { duration: 2000});
               this.projectForm.reset();
+              this.projectService.getProjects().subscribe((projects: Project[]) => {
+                console.log(projects)
+              });
             },
             error => {
               this.snackBar.open('Wystąpił błąd podczas tworzenia projektu ', 'OK', {duration:2000});
