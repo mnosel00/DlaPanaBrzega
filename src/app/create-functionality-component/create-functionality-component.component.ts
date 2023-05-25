@@ -31,7 +31,6 @@ export class CreateFunctionalityComponentComponent implements OnInit {
 
       this.projectService.getProjects().subscribe((projects: Project[]) => {
         this.projectOptions = projects;
-        console.log(projects)
       });
 
       this.functionalityForm = this.formBuilder.group({
@@ -46,13 +45,16 @@ export class CreateFunctionalityComponentComponent implements OnInit {
     }
 
     createFunctionality(){
+      console.log("aaa")
       if(this.functionalityForm.invalid)
       {
-        return;
+        return console.log("invalid")
+        
       }
 
-      const selectedProjectName = this.functionalityForm.value.project;
-      const projectToBeSelected = this.projectOptions.find(project=> project.name === selectedProjectName)
+      const selectedProjectName = this.functionalityForm.value.projectName;
+      const projectToBeSelected = this.projectOptions.find(project=> project.name === selectedProjectName.name)
+      
 
 
       if (!projectToBeSelected) {
@@ -74,6 +76,7 @@ export class CreateFunctionalityComponentComponent implements OnInit {
           this.snackBar.open('Funkcjonalność została utworzona', 'OK', {
             duration: 2000
           });
+          this.functionalityForm.reset();
         },
         error => {
           this.snackBar.open(

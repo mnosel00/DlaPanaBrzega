@@ -24,6 +24,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { FunctionalityService } from './services/functionality.service';
+import { UserService } from './services/user.service';
+import { TaskService } from './services/task.service';
 
 
 
@@ -58,7 +60,9 @@ import { FunctionalityService } from './services/functionality.service';
   
   providers: [
     ProjectService,
-    FunctionalityService
+    FunctionalityService,
+    UserService,
+    TaskService
   ],
   bootstrap: [AppComponent]
 })
