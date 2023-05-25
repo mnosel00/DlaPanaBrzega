@@ -74,6 +74,7 @@ export class CreateFunctionalityComponentComponent implements OnInit {
       }
 
       const functionality: Functionality = {
+        ID: Date.now().toString(),
         name: this.functionalityForm.value.name,
         description: this.functionalityForm.value.description,
         priority: this.functionalityForm.value.priority,

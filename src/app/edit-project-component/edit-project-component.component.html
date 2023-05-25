@@ -1,1 +1,27 @@
-<p>edit-project-component works!</p>
+<h2>Edit Project - {{ project?.name }}</h2>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="editForm">
+  <mat-form-field>
+    <input matInput placeholder="Name" formControlName="name" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea
+      matInput
+      placeholder="Description"
+      formControlName="description"
+      required
+    ></textarea>
+  </mat-form-field>
+
+  <!-- Dodaj inne pola projektu -->
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="editForm.invalid"
+  >
+    Save
+  </button>
+</form>

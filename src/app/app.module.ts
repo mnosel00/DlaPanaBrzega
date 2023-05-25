@@ -22,6 +22,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { FunctionalityService } from './services/functionality.service';
 import { UserService } from './services/user.service';
@@ -57,7 +59,11 @@ import { CreateUserComponentComponent } from './create-user-component/create-use
     MatButtonModule,
     MatSnackBarModule ,
     BrowserAnimationsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule,
+    MatIconModule,
+  
+
   ],
   
   providers: [

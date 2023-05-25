@@ -12,15 +12,15 @@ import { CreateTaskComponentComponent } from './create-task-component/create-tas
 
 
 const routes: Routes = [
-  {path:"create-project",component:CreateProjectComponentComponent},
+  {path:'projects/create',component:CreateProjectComponentComponent},
   {path:"create-functionality",component:CreateFunctionalityComponentComponent},
   {path:"create-user",component:CreateUserComponentComponent},
   {path:"create-task",component:CreateTaskComponentComponent},
-  {path:"edit-project/:id",component:EditProjectComponentComponent},
+  {path:"projects/:id/edit",component:EditProjectComponentComponent},
   {path:"project-details/:id",component:ProjectDetailsComponentComponent},
-  {path:"project-list",component:ProjectListComponentComponent},
+  {path:"projects/list",component:ProjectListComponentComponent},
   {path:"delete-project/:id",component:DeleteProjectComponentComponent},
-  {path:"",redirectTo:"project-list", pathMatch:"full"}
+  {path:"",redirectTo:"projects/list", pathMatch:"full"}
 
 ];
 

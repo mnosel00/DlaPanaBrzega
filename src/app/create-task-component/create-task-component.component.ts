@@ -78,6 +78,7 @@ export class CreateTaskComponentComponent implements OnInit {
     }
 
     const task: Task = {
+      ID:Date.now().toString(),
       name: this.taskForm.value.name,
       description: this.taskForm.value.description,
       priority: this.taskForm.value.priority,

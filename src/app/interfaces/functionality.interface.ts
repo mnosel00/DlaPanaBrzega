@@ -4,6 +4,7 @@ import { User } from "./user.interface";
 
 
 export interface Functionality {
+  ID:string;
     name: string;
     description: string;
     priority : string;

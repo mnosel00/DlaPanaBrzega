@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Project } from '../interfaces/project.interface';
 import { of } from 'rxjs';
 
@@ -35,6 +35,19 @@ import { of } from 'rxjs';
     getProjects(): Observable<Project[]> {
       return of(this.projects);
     }
+
+    getSingleProject(ID: string): Observable<Project> {
+      const project = this.projects.find(p => p.ID === ID);
+
+      if (project) 
+      {
+        return of(project);
+      } 
+      else 
+      {
+        return throwError(new Error('Project not found'));
+      }
+    }
   
     createProject(project: Project): Observable<Project> {
       this.projects.push(project);
@@ -43,7 +56,10 @@ import { of } from 'rxjs';
     }
 
     updateProject(project: Project): Observable<Project> {
-    const projectToUpdate = this.projects.find(p => p.name === project.name);
+      console.log(project)
+    const projectToUpdate = this.projects.find(p => p.ID === project.ID);
+
+    console.log(projectToUpdate)
 
     if (projectToUpdate) 
     {

@@ -37,7 +37,8 @@ export class CreateProjectComponentComponent implements OnInit {
 
       const project: Project = {
         name: this.projectForm.value.name,
-        description: this.projectForm.value.description
+        description: this.projectForm.value.description,
+        ID:Date.now().toString()
       };
 
       this.projectService.createProject(project)

@@ -37,6 +37,7 @@ createUser(){
   }
 
   const user : User = {
+    ID:Date.now().toString(),
     login: this.userForm.value.login,
     passwd: this.userForm.value.passwd,
     name: this.userForm.value.name,
