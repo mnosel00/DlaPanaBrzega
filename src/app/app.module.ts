@@ -47,7 +47,7 @@ import { FunctionalityService } from './services/functionality.service';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatFormFieldModule,
+    MatFormFieldModule, 
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,

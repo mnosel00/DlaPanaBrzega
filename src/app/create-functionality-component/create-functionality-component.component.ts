@@ -21,7 +21,7 @@ export class CreateFunctionalityComponentComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private projectService : ProjectService,
-    private functionalityService : FunctionalityService,
+    private  functionalityService : FunctionalityService,
     private snackBar: MatSnackBar,
     ) 
     {

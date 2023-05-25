@@ -1,13 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, empty } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Project } from '../interfaces/project.interface';
-import { Functionality } from '../interfaces/functionality.interface';
-import { Task } from '../interfaces/task.interface';
 import { of } from 'rxjs';
-import { User } from '../interfaces/user.interface';
-import { WorkStatus } from '../enums/workStatus.enum';
-import { Role } from '../enums/role.enum';
 
 
 @Injectable({
@@ -20,8 +14,6 @@ import { Role } from '../enums/role.enum';
 
     private localStorageKey = 'projects';
     private projects: Project[] = [];
-    private tasks: Task[] =[];
-    private users: User[] = [];
     
     private loadProjectsFromLocalStorage(): void {
       const projectsData = localStorage.getItem(this.localStorageKey);
@@ -80,94 +72,7 @@ import { Role } from '../enums/role.enum';
     }
     }
 
-    //UZYTKOWNICY
-    getUsers(): Observable<User[]>{
-      return of(this.users);
-    }
-
-    createUsers(user:User): Observable<User>{
-      this.users.push(user);
-      return of(user)
-    }
-
-    updateUser(user: User): Observable<User>{
-      const userToUpdate = this.users.find(u=>u.login === user.login);
-
-      if(userToUpdate)
-      {
-        userToUpdate.login = user.login
-        userToUpdate.passwd = user.passwd
-        userToUpdate.name = user.name
-        userToUpdate.surname = user.surname
-        userToUpdate.role = user.role
-        return of(userToUpdate)
-      }
-      else
-      {
-        return of()
-      }
-    }
-
-    deleteUser(userLogin: string): Observable<boolean>{
-      const index = this.users.findIndex(u=>u.login === userLogin);
-
-      if (index !== -1) 
-      {
-        this.users.splice(index, 1);
-        return of(true);
-      } 
-      else 
-      {
-        return of(false);
-      }
-    }
-
-
     //ZADANIA
-    getTasks(): Observable<Task[]>{
-      return of(this.tasks);
-    }
 
-    createTask(task:Task): Observable<Task>{
-      this.tasks.push(task);
-      return of(task)
-    }
-
-    updateTask(task: Task): Observable<Task>{
-      const taskToUpdate = this.tasks.find(u=>u.name === task.name);
-
-      if(taskToUpdate)
-      {
-        taskToUpdate.name = task.name
-        taskToUpdate.description = task.description
-        taskToUpdate.priority = task.priority
-        taskToUpdate.functionality = task.functionality
-        taskToUpdate.estimatedTime = task.estimatedTime
-        taskToUpdate.state = task.state
-        taskToUpdate.addedDate = task.addedDate
-        taskToUpdate.startDate = task.startDate
-        taskToUpdate.endDate = task.endDate
-        taskToUpdate.assignedUser = task.assignedUser
-        return of(taskToUpdate)
-      }
-      else
-      {
-        return of()
-      }
-    }
-
-    deleteTask(taskName: string): Observable<boolean>{
-      const index = this.tasks.findIndex(t=>t.name === taskName);
-
-      if (index !== -1) 
-      {
-        this.tasks.splice(index, 1);
-        return of(true);
-      } 
-      else 
-      {
-        return of(false);
-      }
-    }
   }
   
