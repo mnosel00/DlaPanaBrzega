@@ -1,5 +1,6 @@
 import { Project } from "./project.interface";
 import { WorkStatus } from "../enums/workStatus.enum";
+import { User } from "./user.interface";
 
 
 export interface Functionality {
@@ -7,7 +8,7 @@ export interface Functionality {
     description: string;
     priority : string;
     project: Project;
-    owner : string;
+    owner : User;
     status : WorkStatus;
 
   }

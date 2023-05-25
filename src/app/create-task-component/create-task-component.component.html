@@ -1,1 +1,66 @@
-<p>create-task-component works!</p>
+<form [formGroup]="taskForm" (ngSubmit)="createTask()">
+  <mat-form-field>
+    <mat-label>Nazwa</mat-label>
+    <input matInput formControlName="name" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Opis</mat-label>
+    <textarea matInput formControlName="description" required></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Priorytet</mat-label>
+    <input matInput formControlName="priority" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Funkcjonalność</mat-label>
+    <mat-select formControlName="functionality" required>
+      <mat-option *ngFor="let func of functionalityOptions" [value]="func">{{
+        func.name
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Czas szacowany</mat-label>
+    <input matInput type="number" formControlName="estimatedTime" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="state" required>
+      <mat-option *ngFor="let status of enumValues" [value]="status">{{
+        status
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Data dodania</mat-label>
+    <input matInput type="text" formControlName="addedDate" readonly />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Data rozpoczęcia</mat-label>
+    <input matInput type="date" formControlName="startDate" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Data zakończenia</mat-label>
+    <input matInput type="date" formControlName="endDate" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Przypisany użytkownik</mat-label>
+    <mat-select formControlName="assignedUser">
+      <mat-option></mat-option>
+      <mat-option *ngFor="let user of ownerOptions" [value]="user">{{
+        user.name
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Dodaj zadanie</button>
+</form>

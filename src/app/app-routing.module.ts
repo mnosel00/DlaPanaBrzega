@@ -7,11 +7,15 @@ import { ProjectDetailsComponentComponent } from './project-details-component/pr
 import { ProjectListComponentComponent } from './project-list-component/project-list-component.component';
 import { DeleteProjectComponentComponent } from './delete-project-component/delete-project-component.component';
 import { CreateFunctionalityComponentComponent } from './create-functionality-component/create-functionality-component.component';
+import { CreateUserComponentComponent } from './create-user-component/create-user-component.component';
+import { CreateTaskComponentComponent } from './create-task-component/create-task-component.component';
 
 
 const routes: Routes = [
   {path:"create-project",component:CreateProjectComponentComponent},
   {path:"create-functionality",component:CreateFunctionalityComponentComponent},
+  {path:"create-user",component:CreateUserComponentComponent},
+  {path:"create-task",component:CreateTaskComponentComponent},
   {path:"edit-project/:id",component:EditProjectComponentComponent},
   {path:"project-details/:id",component:ProjectDetailsComponentComponent},
   {path:"project-list",component:ProjectListComponentComponent},

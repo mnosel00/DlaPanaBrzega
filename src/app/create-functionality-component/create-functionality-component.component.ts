@@ -6,6 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Project } from '../interfaces/project.interface';
 import { Functionality } from '../interfaces/functionality.interface';
 import { FunctionalityService } from '../services/functionality.service';
+import { User } from '../interfaces/user.interface';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-create-functionality-component',
@@ -16,12 +18,14 @@ export class CreateFunctionalityComponentComponent implements OnInit {
   enumValues = Object.values(WorkStatus)
   functionalityForm! : FormGroup;
   projectOptions! : Project[];
+  ownerOptions! : User[];
   
 
   constructor(
     private formBuilder: FormBuilder,
     private projectService : ProjectService,
-    private  functionalityService : FunctionalityService,
+    private userService : UserService,
+    private functionalityService : FunctionalityService,
     private snackBar: MatSnackBar,
     ) 
     {
@@ -32,6 +36,10 @@ export class CreateFunctionalityComponentComponent implements OnInit {
       this.projectService.getProjects().subscribe((projects: Project[]) => {
         this.projectOptions = projects;
       });
+
+      this.userService.getUsers().subscribe((users:User[])=>{
+        this.ownerOptions = users;
+      })
 
       this.functionalityForm = this.formBuilder.group({
         name: ['', Validators.required],
@@ -54,10 +62,14 @@ export class CreateFunctionalityComponentComponent implements OnInit {
 
       const selectedProjectName = this.functionalityForm.value.projectName;
       const projectToBeSelected = this.projectOptions.find(project=> project.name === selectedProjectName.name)
+
+      const selectedOwnerLogin = this.functionalityForm.value.owner;
+      console.log(selectedOwnerLogin)
+      const ownerToBeSelected = this.ownerOptions.find(user=> user.login===selectedOwnerLogin.login)
       
 
 
-      if (!projectToBeSelected) {
+      if (!projectToBeSelected || !ownerToBeSelected) {
         return;
       }
 
@@ -66,7 +78,7 @@ export class CreateFunctionalityComponentComponent implements OnInit {
         description: this.functionalityForm.value.description,
         priority: this.functionalityForm.value.priority,
         project: projectToBeSelected,
-        owner: this.functionalityForm.value.owner,
+        owner: ownerToBeSelected,
         status: this.functionalityForm.value.status
       };
 

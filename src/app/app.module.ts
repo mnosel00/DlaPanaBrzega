@@ -26,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { FunctionalityService } from './services/functionality.service';
 import { UserService } from './services/user.service';
 import { TaskService } from './services/task.service';
+import { CreateUserComponentComponent } from './create-user-component/create-user-component.component';
 
 
 
@@ -40,7 +41,8 @@ import { TaskService } from './services/task.service';
     EditFunctionalityComponentComponent,
     CreateTaskComponentComponent,
     EditTaskComponentComponent,
-    DeleteProjectComponentComponent
+    DeleteProjectComponentComponent,
+    CreateUserComponentComponent
   ],
   imports: [ 
     BrowserModule,
