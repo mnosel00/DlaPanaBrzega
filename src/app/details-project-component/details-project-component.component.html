@@ -1,12 +1,13 @@
-<!-- <h2>Project Details - {{ projectName }}</h2>
-
-<div *ngIf="functionality">
-  <h3>Funkcjonalność: {{ functionality.name }}</h3>
-  <p>Czas rozpoczęcia: {{ startDate }}</p>
-  <p>Czas trwania: {{ duration }} hours</p>
-  <p>Przewidywany czas trwania: {{ estimatedTime }} hours</p>
-</div>
-
-<button mat-raised-button color="primary" routerLink="/projects/list">
-  Back to Projects
-</button> -->
+<h1>Details of - {{ project.name }} Project</h1>
+<p>
+  Najwcześniej dodana funkcja jest jednocześnie datą staru projektu. Jest to:
+  {{ startDate }}
+</p>
+<p>
+  Czas w dniach, który upłynął od momentu rozpoczęcia projektu wynosi:
+  {{ timeSpent }}
+</p>
+<p>
+  Przewidywany czas zakończenia wszystkich zadań: {{ estimatedTime }} godziny
+</p>
+<p>Roboczo godziny przepracowane nad projektem {{ manHour }} .</p>

@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { CreateProjectComponentComponent } from './create-project-component/create-project-component.component';
 import { from } from 'rxjs';
 import { EditProjectComponentComponent } from './edit-project-component/edit-project-component.component';
-import { ProjectDetailsComponentComponent } from './project-details-component/project-details-component.component';
 import { ProjectListComponentComponent } from './project-list-component/project-list-component.component';
-import { DeleteProjectComponentComponent } from './delete-project-component/delete-project-component.component';
+
 import { CreateFunctionalityComponentComponent } from './create-functionality-component/create-functionality-component.component';
 import { CreateUserComponentComponent } from './create-user-component/create-user-component.component';
 import { CreateTaskComponentComponent } from './create-task-component/create-task-component.component';
+import { DetailsProjectComponentComponent } from './details-project-component/details-project-component.component';
 
 
 const routes: Routes = [
@@ -17,9 +17,8 @@ const routes: Routes = [
   {path:"create-user",component:CreateUserComponentComponent},
   {path:"create-task",component:CreateTaskComponentComponent},
   {path:"projects/:id/edit",component:EditProjectComponentComponent},
-  {path:"projects/:id/details",component:ProjectDetailsComponentComponent},
+  {path:"projects/:id/details",component:DetailsProjectComponentComponent},
   {path:"projects/list",component:ProjectListComponentComponent},
-  {path:"delete-project/:id",component:DeleteProjectComponentComponent},
   {path:"",redirectTo:"projects/list", pathMatch:"full"}
 
 ];

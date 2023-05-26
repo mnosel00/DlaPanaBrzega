@@ -8,12 +8,13 @@ export interface Functionality {
     name: string;
     description: string;
     priority : string;
-    project: Project;
+    project: Project; // Projekt P1
     owner : User;
     status : WorkStatus;
     addedDate: Date;
-    startDate?: Date;
+    startDate?: Date; //Najwcześniejsza Data 
     endDate?: Date;
-    timeSpent?: number
+    timeSpent?: number // Current Date - StartDate
+    //przewidywany czas trwania - suma estimatedTime z task
 
   }
