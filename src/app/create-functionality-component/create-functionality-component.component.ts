@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkStatus } from '../enums/workStatus.enum';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectService } from '../services/project.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Project } from '../interfaces/project.interface';
@@ -27,8 +27,11 @@ export class CreateFunctionalityComponentComponent implements OnInit {
     private userService : UserService,
     private functionalityService : FunctionalityService,
     private snackBar: MatSnackBar,
+    
     ) 
     {
+      
+      
     }
 
     ngOnInit() {
@@ -41,13 +44,21 @@ export class CreateFunctionalityComponentComponent implements OnInit {
         this.ownerOptions = users;
       })
 
+      const currentDate = new Date().toISOString().split('T')[0];
+      const addedDateControl = new FormControl({ value: currentDate, disabled: true });
+
+
       this.functionalityForm = this.formBuilder.group({
         name: ['', Validators.required],
         description: ['', Validators.required],
         priority: ['', Validators.required],
         projectName: ['', Validators.required], 
         owner: ['', Validators.required],
-        status: [WorkStatus.Todo, Validators.required]
+        status: [WorkStatus.Todo, Validators.required],
+        addedDate: addedDateControl,
+        startDate: [''],
+        endDate: [''],
+        timeSpent: ['']
       });
       
     }
@@ -73,6 +84,12 @@ export class CreateFunctionalityComponentComponent implements OnInit {
         return;
       }
 
+      const currentDate = new Date().toISOString().split('T')[0];
+      const addedDateControl = new FormControl({ value: currentDate, disabled: true });
+      const addedDateValue = addedDateControl.value !== null ? addedDateControl.value : currentDate;
+
+
+
       const functionality: Functionality = {
         ID: Date.now().toString(),
         name: this.functionalityForm.value.name,
@@ -80,7 +97,10 @@ export class CreateFunctionalityComponentComponent implements OnInit {
         priority: this.functionalityForm.value.priority,
         project: projectToBeSelected,
         owner: ownerToBeSelected,
-        status: this.functionalityForm.value.status
+        status: this.functionalityForm.value.status,
+        addedDate: new Date(addedDateValue),
+        startDate: this.functionalityForm.value.startDate || undefined,
+        endDate: this.functionalityForm.value.endDate || undefined,
       };
 
       this.functionalityService.createFunctionality(functionality).subscribe(

@@ -17,7 +17,7 @@ const routes: Routes = [
   {path:"create-user",component:CreateUserComponentComponent},
   {path:"create-task",component:CreateTaskComponentComponent},
   {path:"projects/:id/edit",component:EditProjectComponentComponent},
-  {path:"project-details/:id",component:ProjectDetailsComponentComponent},
+  {path:"projects/:id/details",component:ProjectDetailsComponentComponent},
   {path:"projects/list",component:ProjectListComponentComponent},
   {path:"delete-project/:id",component:DeleteProjectComponentComponent},
   {path:"",redirectTo:"projects/list", pathMatch:"full"}

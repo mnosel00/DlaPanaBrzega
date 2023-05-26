@@ -11,5 +11,9 @@ export interface Functionality {
     project: Project;
     owner : User;
     status : WorkStatus;
+    addedDate: Date;
+    startDate?: Date;
+    endDate?: Date;
+    timeSpent?: number
 
   }

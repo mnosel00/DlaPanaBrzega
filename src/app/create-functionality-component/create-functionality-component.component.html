@@ -53,6 +53,20 @@
     </mat-select>
   </mat-form-field>
 
+  <mat-form-field>
+    <mat-label>Data dodania</mat-label>
+    <input matInput type="date" formControlName="addedDate" readonly />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Data rozpoczęcia</mat-label>
+    <input matInput type="date" formControlName="startDate" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Data zakończenia</mat-label>
+    <input matInput type="date" formControlName="endDate" />
+  </mat-form-field>
   <button
     mat-raised-button
     color="primary"

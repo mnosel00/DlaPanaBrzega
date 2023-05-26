@@ -29,6 +29,7 @@ import { FunctionalityService } from './services/functionality.service';
 import { UserService } from './services/user.service';
 import { TaskService } from './services/task.service';
 import { CreateUserComponentComponent } from './create-user-component/create-user-component.component';
+import { DetailsProjectComponentComponent } from './details-project-component/details-project-component.component';
 
 
 
@@ -44,7 +45,8 @@ import { CreateUserComponentComponent } from './create-user-component/create-use
     CreateTaskComponentComponent,
     EditTaskComponentComponent,
     DeleteProjectComponentComponent,
-    CreateUserComponentComponent
+    CreateUserComponentComponent,
+    DetailsProjectComponentComponent
   ],
   imports: [ 
     BrowserModule,
