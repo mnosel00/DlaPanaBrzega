@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { WorkStatus } from '../enums/workStatus.enum';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TaskService } from '../services/task.service';
@@ -33,7 +33,8 @@ export class CreateTaskComponentComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const currentDate = new Date().toISOString().split('T')[0]; // Dzisiejsza data jako string w formacie "yyyy-mm-dd"
+    const currentDate = new Date().toISOString().split('T')[0];
+      const addedDateControl = new FormControl({ value: currentDate, disabled: true });
 
     this.userService.getUsers().subscribe((users:User[])=>{
       this.ownerOptions = users;
@@ -50,7 +51,7 @@ export class CreateTaskComponentComponent implements OnInit {
       functionality: ['', Validators.required],
       estimatedTime: ['', Validators.required],
       state: ['', Validators.required],
-      addedDate: [{ value: currentDate, disabled: true }],
+      addedDate: addedDateControl,
       startDate: [''],
       endDate: [''],
       assignedUser: ['']
@@ -76,6 +77,9 @@ export class CreateTaskComponentComponent implements OnInit {
     {
       return;
     }
+    const currentDate = new Date().toISOString().split('T')[0];
+    const addedDateControl = new FormControl({ value: currentDate, disabled: true });
+    const addedDateValue = addedDateControl.value !== null ? addedDateControl.value : currentDate;
 
     const task: Task = {
       ID:Date.now().toString(),
@@ -85,7 +89,7 @@ export class CreateTaskComponentComponent implements OnInit {
       functionality: functionalityToBeSelected,
       estimatedTime: this.taskForm.value.estimatedTime,
       state: this.taskForm.value.state,
-      addedDate: this.taskForm.value.addedDate,
+      addedDate: new Date(addedDateValue),
       startDate: this.taskForm.value.startDate || undefined,
       endDate: this.taskForm.value.endDate || undefined,
       assignedUser: ownerToBeSelected || undefined
