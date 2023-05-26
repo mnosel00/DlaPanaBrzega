@@ -38,9 +38,9 @@ export class ProjectListComponentComponent implements OnInit {
   }
 
   deleteProject(project: Project) {
-    // Wywołaj metodę serwisu usuwającego projekt i zaktualizuj listę projektów
-    this.projectService.deleteProject(project.ID);
-    this.getProjects();
+    this.projectService.deleteProject(project.ID).subscribe(() => {
+      this.projects = this.projects.filter(p => p.ID !== project.ID);
+    });
   }
 
   viewProjectDetails(project: Project) {

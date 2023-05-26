@@ -74,8 +74,8 @@ import { of } from 'rxjs';
     }
   }
   
-    deleteProject(projectName: string): Observable<boolean> {
-      const projectToDeleteIndex = this.projects.findIndex(p => p.name === projectName);
+    deleteProject(ID: string): Observable<boolean> {
+      const projectToDeleteIndex = this.projects.findIndex(p => p.ID === ID);
 
     if (projectToDeleteIndex !== -1) {
       this.projects.splice(projectToDeleteIndex, 1);
