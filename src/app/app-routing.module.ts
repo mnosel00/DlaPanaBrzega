@@ -9,6 +9,7 @@ import { CreateFunctionalityComponentComponent } from './create-functionality-co
 import { CreateUserComponentComponent } from './create-user-component/create-user-component.component';
 import { CreateTaskComponentComponent } from './create-task-component/create-task-component.component';
 import { DetailsProjectComponentComponent } from './details-project-component/details-project-component.component';
+import { ActualProjectComponentComponent } from './actual-project-component/actual-project-component.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:"create-functionality",component:CreateFunctionalityComponentComponent},
   {path:"create-user",component:CreateUserComponentComponent},
   {path:"create-task",component:CreateTaskComponentComponent},
+  {path:"projects/list/:id",component:ActualProjectComponentComponent},
   {path:"projects/:id/edit",component:EditProjectComponentComponent},
   {path:"projects/:id/details",component:DetailsProjectComponentComponent},
   {path:"projects/list",component:ProjectListComponentComponent},

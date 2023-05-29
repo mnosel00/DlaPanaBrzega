@@ -30,6 +30,7 @@ import { UserService } from './services/user.service';
 import { TaskService } from './services/task.service';
 import { CreateUserComponentComponent } from './create-user-component/create-user-component.component';
 import { DetailsProjectComponentComponent } from './details-project-component/details-project-component.component';
+import { ActualProjectComponentComponent } from './actual-project-component/actual-project-component.component';
 
 
 
@@ -44,7 +45,8 @@ import { DetailsProjectComponentComponent } from './details-project-component/de
     CreateTaskComponentComponent,
     EditTaskComponentComponent,
     CreateUserComponentComponent,
-    DetailsProjectComponentComponent
+    DetailsProjectComponentComponent,
+    ActualProjectComponentComponent
   ],
   imports: [ 
     BrowserModule,

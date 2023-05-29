@@ -30,7 +30,7 @@ export class ProjectListComponentComponent implements OnInit {
 
   goToProject(project: Project) {
     // Przenieś się do komponentu projektu (np. ProjectComponent) i przekaż identyfikator projektu
-    this.router.navigate(['/projects', project.ID]);
+    this.router.navigate(['/projects/list', project.ID]);
   }
 
   editProject(project: Project) {

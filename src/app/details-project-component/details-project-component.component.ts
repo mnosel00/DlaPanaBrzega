@@ -31,6 +31,7 @@ export class DetailsProjectComponentComponent implements OnInit {
  userOptions! : User[]
  userAssignedToTask!: User[]
  userAssignedToFunctionality!: User[]
+ functionalitiesIDs!:String[]
 
  constructor(
     private route: ActivatedRoute,
@@ -115,14 +116,14 @@ export class DetailsProjectComponentComponent implements OnInit {
   } 
 
   getTimeFromTask(){
-    const functionalitiesIDs = this.functionalitiesBelongToProject.map(f => f.ID)
+    this.functionalitiesIDs = this.functionalitiesBelongToProject.map(f => f.ID)
 
-    console.log(functionalitiesIDs)
+    console.log(this.functionalitiesIDs)
 
-    this.estimatedTime = this.tasksOptions.filter(task => functionalitiesIDs.includes(task.functionality.ID) && task.state!==WorkStatus.Done).reduce((total,task)=> total + task.estimatedTime,0)
+    this.estimatedTime = this.tasksOptions.filter(task => this.functionalitiesIDs.includes(task.functionality.ID) && task.state!==WorkStatus.Done).reduce((total,task)=> total + task.estimatedTime,0)
 
     const today = new Date()
-    this.manHour = this.tasksOptions.filter(task => functionalitiesIDs.includes(task.functionality.ID) && task.state !==WorkStatus.Done).reduce((totalDays,task)=>{
+    this.manHour = this.tasksOptions.filter(task => this.functionalitiesIDs.includes(task.functionality.ID) && task.state !==WorkStatus.Done).reduce((totalDays,task)=>{
       
       const startDate = new Date(task.startDate!);
       const endDate = task.state === WorkStatus.Done ? new Date (task.endDate!) : today
@@ -136,13 +137,17 @@ export class DetailsProjectComponentComponent implements OnInit {
   }
 
   usersAssignedToTasks(){
-    const assignedUserIDs = this.tasksOptions.map(task=>task.assignedUser?.ID)
-    this.userAssignedToTask = this.userOptions.filter(user => assignedUserIDs.includes(user.ID))
-    console.log(this.userAssignedToTask)
+
+ 
+    const tasksBelongsToFunctionalityIDs = this.tasksOptions.filter(task=>this.functionalitiesIDs.includes(task.functionality.ID)).flatMap(task=>task.assignedUser?.ID)
+    console.log(tasksBelongsToFunctionalityIDs)
+
+    this.userAssignedToTask = this.userOptions.filter(user => tasksBelongsToFunctionalityIDs.includes(user.ID))
   }
 
   usersAssignedToFunctionalities(){
-    const assignedUserIDs = this.functionalityOptions.map(func=>func.owner.ID)
+    const assignedUserIDs = this.functionalitiesBelongToProject.flatMap(func=>func.owner.ID)
+
     this.userAssignedToFunctionality = this.userOptions.filter(user=>assignedUserIDs.includes(user.ID))
   }
   
