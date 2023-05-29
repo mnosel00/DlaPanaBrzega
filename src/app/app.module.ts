@@ -31,6 +31,7 @@ import { TaskService } from './services/task.service';
 import { CreateUserComponentComponent } from './create-user-component/create-user-component.component';
 import { DetailsProjectComponentComponent } from './details-project-component/details-project-component.component';
 import { ActualProjectComponentComponent } from './actual-project-component/actual-project-component.component';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -64,6 +65,7 @@ import { ActualProjectComponentComponent } from './actual-project-component/actu
     MatSelectModule,
     MatTableModule,
     MatIconModule,
+    MatSortModule
   
 
   ],
