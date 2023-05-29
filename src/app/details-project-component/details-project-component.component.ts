@@ -30,6 +30,7 @@ export class DetailsProjectComponentComponent implements OnInit {
  manHour!: number
  userOptions! : User[]
  userAssignedToTask!: User[]
+ userAssignedToFunctionality!: User[]
 
  constructor(
     private route: ActivatedRoute,
@@ -70,6 +71,8 @@ export class DetailsProjectComponentComponent implements OnInit {
 
     this.getAllFunctionalitiesBelongToProject()
     this.getTimeFromTask()
+    this.usersAssignedToTasks()
+    this.usersAssignedToFunctionalities()
   }
 
   getSingleProject(ID:string){
@@ -132,8 +135,15 @@ export class DetailsProjectComponentComponent implements OnInit {
     this.manHour = this.manHour*8
   }
 
-  userAssignedToTasks(){
-    this.userAssignedToTask = this.userOptions.filter(user => user)
+  usersAssignedToTasks(){
+    const assignedUserIDs = this.tasksOptions.map(task=>task.assignedUser?.ID)
+    this.userAssignedToTask = this.userOptions.filter(user => assignedUserIDs.includes(user.ID))
+    console.log(this.userAssignedToTask)
+  }
+
+  usersAssignedToFunctionalities(){
+    const assignedUserIDs = this.functionalityOptions.map(func=>func.owner.ID)
+    this.userAssignedToFunctionality = this.userOptions.filter(user=>assignedUserIDs.includes(user.ID))
   }
   
 }

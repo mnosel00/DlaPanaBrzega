@@ -11,3 +11,17 @@
   Przewidywany czas zakończenia wszystkich zadań: {{ estimatedTime }} godziny
 </p>
 <p>Roboczo godziny przepracowane nad projektem {{ manHour }} .</p>
+
+<p>Użytkownicy przypisani do Zadań z projektu {{ project.name }}:</p>
+<ul>
+  <li *ngFor="let user of userAssignedToTask">
+    Login: {{ user.login }}, Name: {{ user.name }}, Surname: {{ user.surname }}
+  </li>
+</ul>
+
+<p>Właściciele funkcjonalności przypisanych do projektu {{ project.name }}:</p>
+<ul>
+  <li *ngFor="let user of userAssignedToFunctionality">
+    Login: {{ user.login }}, Name: {{ user.name }}, Surname: {{ user.surname }}
+  </li>
+</ul>
