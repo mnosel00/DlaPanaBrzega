@@ -6,6 +6,7 @@ import { Project } from '../interfaces/project.interface';
 import { catchError, finalize } from 'rxjs';
 import { ProjectService } from '../services/project.service';
 import { MatSort, Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-actual-project-component',
@@ -20,8 +21,11 @@ projectID!: string
 isLoading: boolean = false;
 project! : Project
 functionalitiesBelongToProject: Functionality[] = []
+sortedData!: Functionality[];
+//dataSource!: MatTableDataSource<Functionality>
 
-@ViewChild('empTbSort') empTbSort = new MatSort();
+
+//@ViewChild(MatSort) sorter!: MatSort;
 
   constructor(
     private functionalityService: FunctionalityService, 
@@ -32,12 +36,38 @@ functionalitiesBelongToProject: Functionality[] = []
       this.functionalityService.getFunctionalities().subscribe((functionalities:Functionality[])=>{
         this.functionalityOptions = functionalities
       })
+      console.log(this.functionalityOptions)
+      
     }
 
-   
+   sortData(sort:Sort)
+    {
+      
+      const data = this.functionalitiesBelongToProject.slice()
+      if(!sort.active || sort.direction ==='')
+      {
+        this.sortedData = data
+        return
+      }
+
+      this.sortedData = data.sort((a,b)=>{
+        const isAsc = sort.direction ==='asc'
+
+        if(sort.active==="status")
+        {
+          return this.compare(a.status,b.status, isAsc)
+        }else{
+          return 0;
+        }
+      })
+    }
+
+    compare(a: number | string, b: number | string, isAsc: boolean){
+      return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+    }
+    
 
   ngOnInit(): void {
-    
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if (id !== null) 
@@ -51,10 +81,12 @@ functionalitiesBelongToProject: Functionality[] = []
 
       this.getSingleProject(this.projectID)
       this.getFunctionalities()
+      this.sortedData = this.functionalitiesBelongToProject.slice()
+      console.log(this.sortedData)
+      console.log(this.functionalitiesBelongToProject)
       
     });
   }
-  
 
   getSingleProject(ID:string){
     this.isLoading = true;
@@ -77,7 +109,6 @@ functionalitiesBelongToProject: Functionality[] = []
   getFunctionalities(){
     this.functionalitiesBelongToProject = this.functionalityOptions.filter(f => f.project.ID === this.projectID)
     console.log(this.functionalitiesBelongToProject)
-
   }
 
   editFunctionality(functionality:Functionality){
@@ -92,6 +123,4 @@ functionalitiesBelongToProject: Functionality[] = []
   {
 
   }
-
-
 }

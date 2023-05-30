@@ -2,10 +2,10 @@
 
 <table
   mat-table
-  [dataSource]="functionalitiesBelongToProject"
+  [dataSource]="sortedData"
   class="mat-elevation-z8"
+  (matSortChange)="sortData($event)"
   matSort
-  #empTbSort="matSort"
 >
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Nazwa</th>
