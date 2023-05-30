@@ -15,7 +15,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ActualProjectComponentComponent implements OnInit{
 functionalities : Functionality[] =[];
-displayedColumns: string[] = ['name', 'status', 'actions'];
+displayedColumns: string[] = ['name', 'status','filterStatus', 'actions'];
 functionalityOptions!: Functionality[]
 projectID!: string
 isLoading: boolean = false;
@@ -66,7 +66,18 @@ sortedData!: Functionality[];
       return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
     }
     
-
+    applyFilterByStatus(filterValue: string) {
+      filterValue = filterValue.trim().toLowerCase();
+      this.sortedData = this.functionalitiesBelongToProject.filter(functionality => {
+        return functionality.status.toLowerCase().includes(filterValue);
+      });
+    }
+    onFilterStatus(event: KeyboardEvent) {
+      const filterValue = (event.target as HTMLInputElement).value;
+      this.applyFilterByStatus(filterValue);
+    }
+    
+    
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');

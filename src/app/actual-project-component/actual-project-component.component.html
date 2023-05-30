@@ -15,6 +15,16 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
     <td mat-cell *matCellDef="let functionality">{{ functionality.status }}</td>
   </ng-container>
+  <ng-container matColumnDef="filterStatus">
+    <th mat-header-cell *matHeaderCellDef>
+      <input
+        matInput
+        placeholder="Filtruj po statusie"
+        (keyup)="onFilterStatus($event)"
+      />
+    </th>
+    <td mat-cell *matCellDef="let functionality">{{ functionality.status }}</td>
+  </ng-container>
 
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>Akcje</th>
