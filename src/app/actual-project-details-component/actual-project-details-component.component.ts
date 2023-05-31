@@ -96,12 +96,8 @@ export class ActualProjectDetailsComponentComponent implements OnInit {
 
     task.forEach((task)=>{
       const startDate = new Date(task.startDate!)
-      console.log(startDate) // task.startDate = 2023-05-30
-      
       const timeDifferance = curentDate.getTime() - startDate.getTime()
-      console.log(timeDifferance)
       const hoursDifferance = timeDifferance / (1000*60*60)
-      console.log(hoursDifferance)
       totalHours += Math.floor(hoursDifferance)
     })
     return totalHours +2
