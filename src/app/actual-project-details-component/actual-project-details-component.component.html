@@ -1,0 +1,87 @@
+<h2>Szczegóły funkcjonalności {{ functionality.name }}</h2>
+
+<table mat-table [dataSource]="functionalities" class="mat-elevation-z8">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Nazwa</th>
+    <td mat-cell *matCellDef="let functionality">{{ functionality.name }}</td>
+  </ng-container>
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Opis</th>
+    <td mat-cell *matCellDef="let functionality">
+      {{ functionality.description }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="priority">
+    <th mat-header-cell *matHeaderCellDef>Piorytet</th>
+    <td mat-cell *matCellDef="let functionality">
+      {{ functionality.priority }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="project">
+    <th mat-header-cell *matHeaderCellDef>Projekt</th>
+    <td mat-cell *matCellDef="let functionality">
+      {{ functionality.project.name }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="owner">
+    <th mat-header-cell *matHeaderCellDef>Właściciel</th>
+    <td mat-cell *matCellDef="let functionality">
+      {{ functionality.owner.name }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let functionality">{{ functionality.status }}</td>
+  </ng-container>
+  <ng-container matColumnDef="addedDate">
+    <th mat-header-cell *matHeaderCellDef>Data dodania</th>
+    <td mat-cell *matCellDef="let functionality">
+      {{ functionality.addedDate }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="startDate">
+    <th mat-header-cell *matHeaderCellDef>Data rozpoczęcia</th>
+    <td mat-cell *matCellDef="let functionality">
+      {{ functionality.startDate }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="endDate">
+    <th mat-header-cell *matHeaderCellDef>Data zakończenia</th>
+    <td mat-cell *matCellDef="let functionality">
+      {{ functionality.endDate }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="timeSpent">
+    <th mat-header-cell *matHeaderCellDef>Poświęcony czas</th>
+    <td mat-cell *matCellDef="let functionality">
+      {{ functionality.timeSpent }}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let functionality; columns: displayedColumns"></tr>
+</table>
+
+<mat-list>
+  <h3>Lista zadań przypisana do funkcjonalności</h3>
+  <mat-list-item
+    *ngFor="let task of tasksBelongsToFunctionality; let i = index"
+    class="hover-cursor"
+  >
+    {{ i + 1 }}. {{ task.name }} - {{ task.description }} - {{ task.state }}.
+    Liczba godzin przepracowanych {{ timeSpent }}
+  </mat-list-item>
+</mat-list>
+
+<mat-list>
+  <h3>
+    Lista użytkowników przypisanych do pracy nad zadaniami do funkcjonalności
+    {{ functionality.name }}
+  </h3>
+  <mat-list-item
+    *ngFor="let user of workingUsers; let i = index"
+    class="hover-cursor"
+  >
+    {{ i + 1 }}. {{ user.name }} {{ user.surname }}
+  </mat-list-item>
+</mat-list>

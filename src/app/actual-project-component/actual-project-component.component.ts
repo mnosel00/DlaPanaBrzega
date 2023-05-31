@@ -132,6 +132,6 @@ sortedData!: Functionality[];
 
   viewFunctionalityDetails(functionality:Functionality)
   {
-
+    this.router.navigate(['/projects/list', functionality.ID, 'details']);
   }
 }

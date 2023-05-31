@@ -13,7 +13,7 @@ import { CreateTaskComponentComponent } from './create-task-component/create-tas
 import { EditTaskComponentComponent } from './edit-task-component/edit-task-component.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProjectService } from './services/project.service';
-
+import { MatListModule } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -32,6 +32,8 @@ import { CreateUserComponentComponent } from './create-user-component/create-use
 import { DetailsProjectComponentComponent } from './details-project-component/details-project-component.component';
 import { ActualProjectComponentComponent } from './actual-project-component/actual-project-component.component';
 import { MatSortModule } from '@angular/material/sort';
+import { ActualProjectDetailsComponentComponent } from './actual-project-details-component/actual-project-details-component.component';
+
 
 
 
@@ -47,7 +49,8 @@ import { MatSortModule } from '@angular/material/sort';
     EditTaskComponentComponent,
     CreateUserComponentComponent,
     DetailsProjectComponentComponent,
-    ActualProjectComponentComponent
+    ActualProjectComponentComponent,
+    ActualProjectDetailsComponentComponent,
   ],
   imports: [ 
     BrowserModule,
@@ -65,7 +68,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatSelectModule,
     MatTableModule,
     MatIconModule,
-    MatSortModule
+    MatSortModule,
+    MatListModule
   
 
   ],

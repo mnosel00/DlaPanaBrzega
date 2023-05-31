@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable, of } from "rxjs";
+import { Observable, of, throwError } from "rxjs";
 import { Functionality } from "../interfaces/functionality.interface";
 
 @Injectable({
@@ -30,7 +30,20 @@ import { Functionality } from "../interfaces/functionality.interface";
       getFunctionalities(): Observable<Functionality[]> {
         return of(this.functionalities);
       }
-    
+
+      getSingleFunctionality(ID: string): Observable<Functionality> {
+        const functionality = this.functionalities.find(f => f.ID === ID);
+  
+        if (functionality) 
+        {
+          return of(functionality);
+        } 
+        else 
+        {
+          return throwError(new Error('Project not found'));
+        }
+      }
+
       createFunctionality(functionality: Functionality): Observable<Functionality> {
         this.functionalities.push(functionality);
         this.saveFunctionalitiesToLocalStorage();
