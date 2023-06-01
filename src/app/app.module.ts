@@ -52,7 +52,7 @@ import { ActualProjectEditFunctionalityComponent } from './actual-project-edit-f
     DetailsProjectComponentComponent,
     ActualProjectComponentComponent,
     ActualProjectDetailsComponentComponent,
-    ActualProjectEditFunctionalityComponent
+    ActualProjectEditFunctionalityComponent,
   ],
   imports: [ 
     BrowserModule,

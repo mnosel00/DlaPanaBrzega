@@ -70,8 +70,8 @@ import { Functionality } from "../interfaces/functionality.interface";
         }
       }
     
-      deleteFunctionality(functionalityName: string): Observable<boolean> {
-        const index = this.functionalities.findIndex(f => f.name === functionalityName);
+      deleteFunctionality(ID: string): Observable<boolean> {
+        const index = this.functionalities.findIndex(f => f.ID === ID);
     
         if (index !== -1) {
           this.functionalities.splice(index, 1);

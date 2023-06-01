@@ -127,6 +127,10 @@ sortedData!: Functionality[];
   }
 
   deleteFunctionality(functionality:Functionality){
+    this.functionalityService.deleteFunctionality(functionality.ID).subscribe(()=>{
+      
+      this.sortedData = this.sortedData.filter(f=>f.ID!==functionality.ID)
+    })
   }
 
   viewFunctionalityDetails(functionality:Functionality)
