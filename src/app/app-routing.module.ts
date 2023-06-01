@@ -18,7 +18,7 @@ import { ActualProjectEditFunctionalityComponent } from './actual-project-edit-f
 
 const routes: Routes = [
   {path:'projects/create',component:CreateProjectComponentComponent},
-  {path:"create-functionality",component:CreateFunctionalityComponentComponent},
+  {path:"functionality/create",component:CreateFunctionalityComponentComponent},
   {path:"create-user",component:CreateUserComponentComponent},
   {path:"create-task",component:CreateTaskComponentComponent},
   {

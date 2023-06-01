@@ -137,4 +137,8 @@ sortedData!: Functionality[];
   {
     this.router.navigate(['/projects/list', functionality.ID, 'details']);
   }
+  createFunctionality() {
+    // Przenieś się do komponentu tworzenia nowego projektu (np. CreateProjectComponent)
+    this.router.navigate(['/functionality/create']);
+  }
 }
