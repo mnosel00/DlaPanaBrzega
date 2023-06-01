@@ -67,6 +67,7 @@
   <mat-list-item
     *ngFor="let task of tasksBelongsToFunctionality; let i = index"
     class="hover-cursor"
+    (click)="goToTaskDetails(task)"
   >
     {{ i + 1 }}. {{ task.name }} - {{ task.description }} - {{ task.state }}.
     Liczba godzin przepracowanych {{ timeSpent }}

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Task } from "../interfaces/task.interface";
-import { Observable, of } from "rxjs";
+import { Observable, of, throwError } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -30,6 +30,19 @@ import { Observable, of } from "rxjs";
 
       getTasks(): Observable<Task[]>{
         return of(this.tasks);
+      }
+
+      getSingleTask(ID: string): Observable<Task> {
+        const task = this.tasks.find(p => p.ID === ID);
+  
+        if (task) 
+        {
+          return of(task);
+        } 
+        else 
+        {
+          return throwError(new Error('Task not found'));
+        }
       }
   
       createTask(task:Task): Observable<Task>{

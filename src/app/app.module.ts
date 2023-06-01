@@ -34,6 +34,8 @@ import { ActualProjectComponentComponent } from './actual-project-component/actu
 import { MatSortModule } from '@angular/material/sort';
 import { ActualProjectDetailsComponentComponent } from './actual-project-details-component/actual-project-details-component.component';
 import { ActualProjectEditFunctionalityComponent } from './actual-project-edit-functionality/actual-project-edit-functionality.component';
+import { TaskDetailsComponentComponent } from './task-details-component/task-details-component.component';
+
 
 
 
@@ -53,6 +55,8 @@ import { ActualProjectEditFunctionalityComponent } from './actual-project-edit-f
     ActualProjectComponentComponent,
     ActualProjectDetailsComponentComponent,
     ActualProjectEditFunctionalityComponent,
+    TaskDetailsComponentComponent,
+
   ],
   imports: [ 
     BrowserModule,

@@ -106,6 +106,10 @@ export class ActualProjectDetailsComponentComponent implements OnInit {
   getTimeSpent(){
     this.timeSpent = this.calculateHoursSinceStartDate(this.tasksBelongsToFunctionality)
   }
+
+  goToTaskDetails(task:Task){
+    this.router.navigate(['/project/task', task.ID, 'details']);
+  }
   
   
 }

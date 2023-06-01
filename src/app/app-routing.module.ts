@@ -12,6 +12,7 @@ import { DetailsProjectComponentComponent } from './details-project-component/de
 import { ActualProjectComponentComponent } from './actual-project-component/actual-project-component.component';
 import { ActualProjectDetailsComponentComponent } from './actual-project-details-component/actual-project-details-component.component';
 import { ActualProjectEditFunctionalityComponent } from './actual-project-edit-functionality/actual-project-edit-functionality.component';
+import { TaskDetailsComponentComponent } from './task-details-component/task-details-component.component';
 
 
 
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path:'projects/create',component:CreateProjectComponentComponent},
   {path:"functionality/create",component:CreateFunctionalityComponentComponent},
   {path:"create-user",component:CreateUserComponentComponent},
-  {path:"create-task",component:CreateTaskComponentComponent},
+  {path:"task/create",component:CreateTaskComponentComponent},
+  {path:'project/task/:id/details', component:TaskDetailsComponentComponent},
   {
     path:"projects/list/:id",
     component:ActualProjectComponentComponent, 
