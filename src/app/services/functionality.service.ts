@@ -51,7 +51,8 @@ import { Functionality } from "../interfaces/functionality.interface";
       }
     
       updateFunctionality(functionality: Functionality): Observable<Functionality> {
-        const functionalityToUpdate = this.functionalities.find(f => f.name === functionality.name);
+        console.log(functionality)
+        const functionalityToUpdate = this.functionalities.find(f => f.ID === functionality.ID);
     
         if (functionalityToUpdate) {
           functionalityToUpdate.name = functionality.name;

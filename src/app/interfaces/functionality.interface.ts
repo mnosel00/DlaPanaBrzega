@@ -14,7 +14,5 @@ export interface Functionality {
     addedDate: Date;
     startDate?: Date; //Najwcześniejsza Data 
     endDate?: Date;
-    timeSpent?: number // Current Date - StartDate
-    //przewidywany czas trwania - suma estimatedTime z task
-
+    timeSpent?: number // 
   }

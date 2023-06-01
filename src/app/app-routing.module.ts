@@ -11,6 +11,8 @@ import { CreateTaskComponentComponent } from './create-task-component/create-tas
 import { DetailsProjectComponentComponent } from './details-project-component/details-project-component.component';
 import { ActualProjectComponentComponent } from './actual-project-component/actual-project-component.component';
 import { ActualProjectDetailsComponentComponent } from './actual-project-details-component/actual-project-details-component.component';
+import { ActualProjectEditFunctionalityComponent } from './actual-project-edit-functionality/actual-project-edit-functionality.component';
+
 
 
 
@@ -26,6 +28,10 @@ const routes: Routes = [
   {
     path: "projects/list/:id/details",component:ActualProjectDetailsComponentComponent
   },
+  {
+    path: "projects/list/:id/edit",component:ActualProjectEditFunctionalityComponent
+  },
+  
   {path:"projects/:id/edit",component:EditProjectComponentComponent},
   {path:"projects/:id/details",component:DetailsProjectComponentComponent},
   {path:"projects/list",component:ProjectListComponentComponent},

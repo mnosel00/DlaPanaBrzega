@@ -1,0 +1,30 @@
+<h2>Edit Functionality {{ functionality.name }}</h2>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="editForm">
+  <mat-form-field>
+    <input
+      matInput
+      formControlName="name"
+      placeholder="Nazwa funkcjonalności"
+      required
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      <mat-option *ngFor="let value of enumValues" [value]="value">
+        {{ value }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="editForm.invalid"
+  >
+    Save
+  </button>
+</form>

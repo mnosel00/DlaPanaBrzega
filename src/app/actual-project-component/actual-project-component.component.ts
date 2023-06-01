@@ -123,11 +123,10 @@ sortedData!: Functionality[];
   }
 
   editFunctionality(functionality:Functionality){
-
+    this.router.navigate(['/projects/list', functionality.ID, 'edit']);
   }
 
   deleteFunctionality(functionality:Functionality){
-
   }
 
   viewFunctionalityDetails(functionality:Functionality)
