@@ -1,12 +1,18 @@
 <nav>
-  <button (click)="register()">Stwórz konto</button>
+  <button *ngIf="isLoggedIn" (click)="register()">Stwórz konto</button>
   <ul>
-    <li *ngIf="!isLoggedIn(); else loggedUser">
+    <li *ngIf="isLoggedIn; else loggedUser">
       <button (click)="login()">Zaloguj</button>
     </li>
     <ng-template #loggedUser>
       <li>
+        <span>Zalogowany jako: {{ loggedInUser }}</span>
+      </li>
+      <li>
         <button (click)="logout()">Wyloguj</button>
+      </li>
+      <li>
+        <button (click)="myAccount()">Przejdz do mojego konta</button>
       </li>
     </ng-template>
   </ul>

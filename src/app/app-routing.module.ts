@@ -13,6 +13,7 @@ import { ActualProjectComponentComponent } from './actual-project-component/actu
 import { ActualProjectDetailsComponentComponent } from './actual-project-details-component/actual-project-details-component.component';
 import { ActualProjectEditFunctionalityComponent } from './actual-project-edit-functionality/actual-project-edit-functionality.component';
 import { TaskDetailsComponentComponent } from './task-details-component/task-details-component.component';
+import { UserDetailsComponentComponent } from './user-details-component/user-details-component.component';
 
 
 
@@ -33,7 +34,7 @@ const routes: Routes = [
   {
     path: "projects/list/:id/edit",component:ActualProjectEditFunctionalityComponent
   },
-  
+  {path: "user/:id/details",component: UserDetailsComponentComponent},
   {path:"projects/:id/edit",component:EditProjectComponentComponent},
   {path:"projects/:id/details",component:DetailsProjectComponentComponent},
   {path:"projects/list",component:ProjectListComponentComponent},

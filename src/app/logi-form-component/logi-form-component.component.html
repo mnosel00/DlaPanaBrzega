@@ -1,17 +1,21 @@
-<div *ngIf="showLogin">
-  <h2>Formularz logowania</h2>
-  <form (ngSubmit)="login()">
-    <label for="username">Nazwa użytkownika:</label>
-    <input type="text" id="username" name="username" [(ngModel)]="username" />
-    <br />
-    <label for="password">Hasło:</label>
-    <input
-      type="password"
-      id="password"
-      name="password"
-      [(ngModel)]="password"
-    />
-    <br />
-    <button type="submit">Zaloguj</button>
-  </form>
-</div>
+<h2>Formularz logowania</h2>
+<form (ngSubmit)="login()">
+  <label for="username">Nazwa użytkownika:</label>
+  <input
+    type="text"
+    id="username"
+    name="username"
+    [(ngModel)]="data.username"
+  />
+  <br />
+  <label for="password">Hasło:</label>
+  <input
+    type="password"
+    id="password"
+    name="password"
+    [(ngModel)]="data.password"
+  />
+  <br />
+  <button type="submit">Zaloguj</button>
+  <button type="button" (click)="onNoClick()">Anuluj</button>
+</form>

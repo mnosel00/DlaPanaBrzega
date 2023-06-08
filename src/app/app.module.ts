@@ -40,6 +40,9 @@ import { MatCardModule } from '@angular/material/card';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LogiFormComponentComponent } from './logi-form-component/logi-form-component.component';
 
+import { MatDialogModule } from '@angular/material/dialog';
+import { UserDetailsComponentComponent } from './user-details-component/user-details-component.component';
+
 
 
 
@@ -63,6 +66,7 @@ import { LogiFormComponentComponent } from './logi-form-component/logi-form-comp
     TaskDetailsComponentComponent,
     NavbarComponent,
     LogiFormComponentComponent,
+    UserDetailsComponentComponent,
 
   ],
   imports: [ 
@@ -84,7 +88,8 @@ import { LogiFormComponentComponent } from './logi-form-component/logi-form-comp
     MatSortModule,
     MatListModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   
 
   ],
