@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { User } from "../interfaces/user.interface";
 import { Observable, of } from "rxjs";
+import { Role } from "../enums/role.enum";
 
 @Injectable({
     providedIn:"root"
@@ -8,8 +9,16 @@ import { Observable, of } from "rxjs";
 
 
 export class UserService {
+    
     private localStorageKey = 'users';
-    private users : User[] = []
+    private users : User[] = [{
+      ID: 'stasr',
+      login: 'admin',
+      passwd: 'admin',
+      name: 'Admin',
+      surname: 'nimdA',
+      role: Role.Admin
+    }]
 
     private loadUsersFromLocalStorage(): void {
         const projectsData = localStorage.getItem(this.localStorageKey);

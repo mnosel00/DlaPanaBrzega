@@ -37,6 +37,8 @@ import { ActualProjectEditFunctionalityComponent } from './actual-project-edit-f
 import { TaskDetailsComponentComponent } from './task-details-component/task-details-component.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import { NavbarComponent } from './navbar/navbar.component';
+import { LogiFormComponentComponent } from './logi-form-component/logi-form-component.component';
 
 
 
@@ -59,6 +61,8 @@ import { MatCardModule } from '@angular/material/card';
     ActualProjectDetailsComponentComponent,
     ActualProjectEditFunctionalityComponent,
     TaskDetailsComponentComponent,
+    NavbarComponent,
+    LogiFormComponentComponent,
 
   ],
   imports: [ 

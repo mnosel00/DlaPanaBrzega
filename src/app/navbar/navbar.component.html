@@ -1,0 +1,13 @@
+<nav>
+  <button (click)="register()">Stwórz konto</button>
+  <ul>
+    <li *ngIf="!isLoggedIn(); else loggedUser">
+      <button (click)="login()">Zaloguj</button>
+    </li>
+    <ng-template #loggedUser>
+      <li>
+        <button (click)="logout()">Wyloguj</button>
+      </li>
+    </ng-template>
+  </ul>
+</nav>

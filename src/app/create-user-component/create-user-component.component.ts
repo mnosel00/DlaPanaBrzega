@@ -26,7 +26,7 @@ ngOnInit() {
     passwd: ['', Validators.required],
     name: ['', Validators.required],
     surname: ['', Validators.required],
-    role: ['', Validators.required]
+    role: ['Developer', Validators.required]
   });
 }
 
