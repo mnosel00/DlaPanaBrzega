@@ -1,5 +1,5 @@
 export enum WorkStatus {
-    Todo = 'To Do',
+    Todo = 'ToDo',
     Doing = 'Doing',
     Done = 'Done'
   }

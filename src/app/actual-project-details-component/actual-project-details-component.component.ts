@@ -7,6 +7,7 @@ import { FunctionalityService } from '../services/functionality.service';
 import { TaskService } from '../services/task.service';
 import { Task } from '../interfaces/task.interface';
 import { User } from '../interfaces/user.interface';
+import { WorkStatus } from '../enums/workStatus.enum';
 
 @Component({
   selector: 'app-actual-project-details-component',
@@ -15,10 +16,14 @@ import { User } from '../interfaces/user.interface';
 })
 export class ActualProjectDetailsComponentComponent implements OnInit {
  functionality!: Functionality
+ workStatus!: WorkStatus
  timeSpent! : number
  allTasks!: Task[] 
  functionalities : Functionality[] = []
  tasksBelongsToFunctionality: Task[] = []
+ tasksToDo: Task[] = []
+ tasksDoing: Task[] = []
+ tasksDone: Task[] = []
  workingUsers: User[]= []
  functionalityID!: string
  isLoading: boolean = false;
@@ -50,6 +55,7 @@ export class ActualProjectDetailsComponentComponent implements OnInit {
       this.getSingleFunctionality(this.functionalityID)
       this.getWorkingUsers()
       this.getTimeSpent()
+      this.saveTaskToItsCategory()
 
     });
   }
@@ -77,6 +83,24 @@ export class ActualProjectDetailsComponentComponent implements OnInit {
   {
     this.tasksBelongsToFunctionality = this.allTasks.filter(task=>task.functionality.ID === this.functionalityID )
     console.log(this.tasksBelongsToFunctionality)
+  }
+
+  saveTaskToItsCategory()
+  {
+    this.tasksBelongsToFunctionality.forEach(task=>{
+      if(task.state ==="ToDo")
+      {
+        this.tasksToDo.push(task);
+      }
+      else if(task.state ==="Doing")
+      {
+        this.tasksDoing.push(task);
+      }
+      else if(task.state ==="Done")
+      {
+        this.tasksDone.push(task);
+      }
+    })
   }
 
   getWorkingUsers()

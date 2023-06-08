@@ -62,17 +62,62 @@
   <tr mat-row *matRowDef="let functionality; columns: displayedColumns"></tr>
 </table>
 
-<mat-list>
-  <h3>Lista zadań przypisana do funkcjonalności</h3>
-  <mat-list-item
-    *ngFor="let task of tasksBelongsToFunctionality; let i = index"
-    class="hover-cursor"
-    (click)="goToTaskDetails(task)"
-  >
-    {{ i + 1 }}. {{ task.name }} - {{ task.description }} - {{ task.state }}.
-    Liczba godzin przepracowanych {{ timeSpent }}
-  </mat-list-item>
-</mat-list>
+<h3>Lista zadań przypisana do funkcjonalności</h3>
+<mat-grid-list cols="3">
+  <!-- Kolumna 'ToDo' -->
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-header>
+        <h3>ToDo</h3>
+      </mat-card-header>
+      <mat-card-content>
+        <ul>
+          <li *ngFor="let task of tasksToDo">
+            <span class="hover-cursor" (click)="goToTaskDetails(task)">{{
+              task.name
+            }}</span>
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <!-- Kolumna 'Doing' -->
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-header>
+        <h3>Doing</h3>
+      </mat-card-header>
+      <mat-card-content>
+        <ul>
+          <li *ngFor="let task of tasksDoing">
+            <span class="hover-cursor" (click)="goToTaskDetails(task)">{{
+              task.name
+            }}</span>
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <!-- Kolumna 'Done' -->
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-header>
+        <h3>Done</h3>
+      </mat-card-header>
+      <mat-card-content>
+        <ul>
+          <li *ngFor="let task of tasksDone">
+            <span class="hover-cursor" (click)="goToTaskDetails(task)">{{
+              task.name
+            }}</span>
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
 
 <mat-list>
   <h3>

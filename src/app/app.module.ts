@@ -35,6 +35,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { ActualProjectDetailsComponentComponent } from './actual-project-details-component/actual-project-details-component.component';
 import { ActualProjectEditFunctionalityComponent } from './actual-project-edit-functionality/actual-project-edit-functionality.component';
 import { TaskDetailsComponentComponent } from './task-details-component/task-details-component.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+
 
 
 
@@ -75,7 +78,9 @@ import { TaskDetailsComponentComponent } from './task-details-component/task-det
     MatTableModule,
     MatIconModule,
     MatSortModule,
-    MatListModule
+    MatListModule,
+    MatGridListModule,
+    MatCardModule
   
 
   ],
