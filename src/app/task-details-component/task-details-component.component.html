@@ -23,7 +23,9 @@
   </ng-container>
   <ng-container matColumnDef="state">
     <th mat-header-cell *matHeaderCellDef>Status</th>
-    <td mat-cell *matCellDef="let task">{{ task.state }}</td>
+    <td mat-cell *matCellDef="let task" (click)="edit(task, 'state')">
+      {{ task.state }}
+    </td>
   </ng-container>
   <ng-container matColumnDef="addedDate">
     <th mat-header-cell *matHeaderCellDef>Data dodania</th>

@@ -56,10 +56,35 @@ export class ActualProjectDetailsComponentComponent implements OnInit {
       this.getWorkingUsers()
       this.getTimeSpent()
       this.saveTaskToItsCategory()
+      this.checkStatusDoing(this.functionality)
+      this.checkStatusDone(this.functionality)
 
     });
   }
 
+  checkStatusDoing(functionality : Functionality)
+  {
+    const checkIfAnyIsDoing = this.tasksBelongsToFunctionality.find(f=>f.state === WorkStatus.Doing )
+
+    if(checkIfAnyIsDoing){
+      functionality.status = WorkStatus.Doing
+      this.functionalityService.updateFunctionality(functionality)
+    }
+  }
+
+  checkStatusDone(functionality : Functionality)
+  {
+    const checkIfAnyIsDoing = this.tasksBelongsToFunctionality.find(f=>f.state === WorkStatus.Done )
+
+    if(checkIfAnyIsDoing){
+      functionality.status = WorkStatus.Done
+      this.functionalityService.updateFunctionality(functionality)
+    }
+  }
+  createTask()
+  {
+    this.router.navigate(['/task/create'])
+  }
   getSingleFunctionality(ID:string){
     this.isLoading = true;
     this.functionalityService

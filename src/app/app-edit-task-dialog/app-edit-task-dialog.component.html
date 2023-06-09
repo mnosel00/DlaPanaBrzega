@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Edytuj Zadanie</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Wybierz status</mat-label>
+    <mat-select [(ngModel)]="value" (keydown.enter)="save()">
+      <mat-option *ngFor="let status of workStatusOptions" [value]="status">{{
+        status
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Anuluj</button>
+  <button mat-button (click)="save()">Zapisz</button>
+</mat-dialog-actions>

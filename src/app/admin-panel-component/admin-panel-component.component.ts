@@ -4,6 +4,7 @@ import { User } from '../interfaces/user.interface';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppEditUserDialogComponent } from '../app-edit-user-dialog/app-edit-user-dialog.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class AdminPanelComponentComponent implements OnInit {
   constructor(
     private userService : UserService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router,
   )
   { 
     this.userService.getUsers().subscribe((users:User[])=>{
@@ -30,6 +32,9 @@ export class AdminPanelComponentComponent implements OnInit {
     
   }
 
+  createUser(){
+    this.router.navigate(['/create-user'])
+  }
   edit(user: User, property: keyof User)
   {
     this.editedUser = user

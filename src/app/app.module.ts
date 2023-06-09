@@ -48,6 +48,7 @@ import { AppEditUserDialogComponent } from './app-edit-user-dialog/app-edit-user
 import { AdminGuard } from './guards/admin.guard';
 import { DevopsGuard } from './guards/devops.guard';
 import { DeveloperGuard } from './guards/developer.guard';
+import { AppEditTaskDialogComponent } from './app-edit-task-dialog/app-edit-task-dialog.component';
 
 
 
@@ -76,6 +77,7 @@ import { DeveloperGuard } from './guards/developer.guard';
     DialogComponentComponent,
     AdminPanelComponentComponent,
     AppEditUserDialogComponent,
+    AppEditTaskDialogComponent,
 
   ],
   imports: [ 

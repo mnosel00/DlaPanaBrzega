@@ -8,6 +8,7 @@ import { ProjectService } from '../services/project.service';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DevopsGuard } from '../guards/devops.guard';
+import { Task } from '../interfaces/task.interface';
 
 @Component({
   selector: 'app-actual-project-component',
@@ -21,6 +22,7 @@ functionalityOptions!: Functionality[]
 projectID!: string
 isLoading: boolean = false;
 project! : Project
+
 functionalitiesBelongToProject: Functionality[] = []
 sortedData!: Functionality[];
 //dataSource!: MatTableDataSource<Functionality>
@@ -63,7 +65,7 @@ sortedData!: Functionality[];
         }
       })
     }
-
+   
     compare(a: number | string, b: number | string, isAsc: boolean){
       return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
     }
