@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LogiFormComponentComponent } from '../logi-form-component/logi-form-component.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,11 +9,23 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   loggedInUser: string | null = null;
   isLoggedIn: boolean = true
 
-  constructor(private router: Router,public dialog: MatDialog,private snackBar: MatSnackBar){}
+  constructor(
+    private router: Router,
+    public dialog: MatDialog,private snackBar: MatSnackBar){}
+
+  ngOnInit(): void 
+  {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    console.log(loggedInUser)
+    if (loggedInUser) {
+      this.isLoggedIn = false;
+      this.loggedInUser = loggedInUser;
+    }
+  }
 
   login()
   {
@@ -25,9 +37,17 @@ export class NavbarComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result && result.success) {
         this.isLoggedIn = false
-        this.loggedInUser = result.username;
-        console.log(this.loggedInUser)
-        console.log("zalogowano pomyślnie ")
+        this.loggedInUser = result.username ;
+
+        if(this.loggedInUser!==null)
+        {
+          localStorage.setItem('loggedInUser', this.loggedInUser);  
+        }else
+        {
+          console.log("Bład w dodaniu do localStorage")
+        }
+        
+
       }else{
         this.snackBar.open('Błędne dane logowania ', 'OK', {duration:2000});
       }
@@ -41,10 +61,13 @@ export class NavbarComponent {
   {
     this.isLoggedIn = true
     this.loggedInUser = null
+    localStorage.removeItem('loggedInUser');
   }
-  myAccount()
-  {
-    this.router.navigate(['/user',this.loggedInUser, 'details'])
+  myAccount() {
+    if (this.loggedInUser) {
+      this.router.navigate(['/user', this.loggedInUser, 'details']);
+    }
   }
+  
 
 }

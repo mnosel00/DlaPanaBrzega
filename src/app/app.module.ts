@@ -42,6 +42,7 @@ import { LogiFormComponentComponent } from './logi-form-component/logi-form-comp
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { UserDetailsComponentComponent } from './user-details-component/user-details-component.component';
+import { DialogComponentComponent } from './dialog-component/dialog-component.component';
 
 
 
@@ -67,6 +68,7 @@ import { UserDetailsComponentComponent } from './user-details-component/user-det
     NavbarComponent,
     LogiFormComponentComponent,
     UserDetailsComponentComponent,
+    DialogComponentComponent,
 
   ],
   imports: [ 

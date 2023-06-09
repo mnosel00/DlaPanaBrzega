@@ -11,7 +11,7 @@ import { TaskService } from '../services/task.service';
   styleUrls: ['./user-details-component.component.css']
 })
 export class UserDetailsComponentComponent implements OnInit {
-  displayedColumns: string[] = ['ID', 'login', 'name', 'surname', 'role'];
+  displayedColumns: string[] = ['ID', 'login', 'name', 'surname', 'role' ];
   users: User[] = []
   userOwner: User[] =[]
   userLogin!: string
