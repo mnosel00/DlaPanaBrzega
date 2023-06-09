@@ -17,6 +17,7 @@ import { UserDetailsComponentComponent } from './user-details-component/user-det
 import { AdminPanelComponentComponent } from './admin-panel-component/admin-panel-component.component';
 import { AdminGuard } from './guards/admin.guard';
 import { DevopsGuard } from './guards/devops.guard';
+import { DeveloperGuard } from './guards/developer.guard';
 
 
 
@@ -31,7 +32,10 @@ const routes: Routes = [
     canActivate: [DevopsGuard]
   },
   {path:"create-user",component:CreateUserComponentComponent},
-  {path:"task/create",component:CreateTaskComponentComponent},
+  {
+    path:"task/create",component:CreateTaskComponentComponent,
+    canActivate: [DeveloperGuard]
+  },
   {path:'project/task/:id/details', component:TaskDetailsComponentComponent},
   {
     path:"projects/list/:id",
