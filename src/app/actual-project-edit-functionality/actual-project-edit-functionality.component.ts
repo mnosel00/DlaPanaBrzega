@@ -21,7 +21,9 @@ export class ActualProjectEditFunctionalityComponent implements OnInit{
   constructor(private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
-    private functionalityService: FunctionalityService){
+    private functionalityService: FunctionalityService,
+    
+    ){
       this.editForm = this.formBuilder.group({
         name: ['', Validators.required],
         status: [WorkStatus, Validators.required]

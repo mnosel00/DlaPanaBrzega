@@ -45,6 +45,8 @@ import { UserDetailsComponentComponent } from './user-details-component/user-det
 import { DialogComponentComponent } from './dialog-component/dialog-component.component';
 import { AdminPanelComponentComponent } from './admin-panel-component/admin-panel-component.component';
 import { AppEditUserDialogComponent } from './app-edit-user-dialog/app-edit-user-dialog.component';
+import { AdminGuard } from './guards/admin.guard';
+import { DevopsGuard } from './guards/devops.guard';
 
 
 
@@ -104,7 +106,9 @@ import { AppEditUserDialogComponent } from './app-edit-user-dialog/app-edit-user
     ProjectService,
     FunctionalityService,
     UserService,
-    TaskService
+    TaskService,
+    AdminGuard,
+    DevopsGuard
   ],
   bootstrap: [AppComponent]
 })

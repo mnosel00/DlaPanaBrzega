@@ -26,7 +26,7 @@ export class AdminGuard implements CanActivate {
     } else {
       // Wyświetl okno dialogowe i przekieruj na inną ścieżkę (np. na stronę logowania)
       alert('Brak uprawnień administratora!');
-      this.router.navigate(['/']);
+      this.router.navigate(['/projects/list']);
       return false;
     }
   }

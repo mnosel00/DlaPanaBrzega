@@ -15,13 +15,21 @@ import { ActualProjectEditFunctionalityComponent } from './actual-project-edit-f
 import { TaskDetailsComponentComponent } from './task-details-component/task-details-component.component';
 import { UserDetailsComponentComponent } from './user-details-component/user-details-component.component';
 import { AdminPanelComponentComponent } from './admin-panel-component/admin-panel-component.component';
+import { AdminGuard } from './guards/admin.guard';
+import { DevopsGuard } from './guards/devops.guard';
 
 
 
 
 const routes: Routes = [
-  {path:'projects/create',component:CreateProjectComponentComponent},
-  {path:"functionality/create",component:CreateFunctionalityComponentComponent},
+  {
+    path:'projects/create',component:CreateProjectComponentComponent,
+    canActivate: [DevopsGuard]
+  },
+  {
+    path:"functionality/create",component:CreateFunctionalityComponentComponent,
+    canActivate: [DevopsGuard]
+  },
   {path:"create-user",component:CreateUserComponentComponent},
   {path:"task/create",component:CreateTaskComponentComponent},
   {path:'project/task/:id/details', component:TaskDetailsComponentComponent},
@@ -33,13 +41,18 @@ const routes: Routes = [
     path: "projects/list/:id/details",component:ActualProjectDetailsComponentComponent
   },
   {
-    path: "projects/list/:id/edit",component:ActualProjectEditFunctionalityComponent
+    path: "projects/list/:id/edit",component:ActualProjectEditFunctionalityComponent,
+    canActivate: [DevopsGuard]
   },
   {
-    path: "users/list", component:AdminPanelComponentComponent 
+    path: "users/list", component:AdminPanelComponentComponent ,
+    canActivate: [AdminGuard]
   },
   {path: "user/:id/details",component: UserDetailsComponentComponent},
-  {path:"projects/:id/edit",component:EditProjectComponentComponent},
+  {
+    path:"projects/:id/edit",component:EditProjectComponentComponent,
+    canActivate: [DevopsGuard]
+  },
   {path:"projects/:id/details",component:DetailsProjectComponentComponent},
   {path:"projects/list",component:ProjectListComponentComponent},
   {path:"",redirectTo:"projects/list", pathMatch:"full"}

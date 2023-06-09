@@ -7,6 +7,7 @@ import { catchError, finalize } from 'rxjs';
 import { ProjectService } from '../services/project.service';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { DevopsGuard } from '../guards/devops.guard';
 
 @Component({
   selector: 'app-actual-project-component',
@@ -32,6 +33,7 @@ sortedData!: Functionality[];
     private projectService: ProjectService,
     private router: Router,
     private route: ActivatedRoute,
+    private devopsGuard : DevopsGuard
     ){
       this.functionalityService.getFunctionalities().subscribe((functionalities:Functionality[])=>{
         this.functionalityOptions = functionalities
@@ -127,10 +129,13 @@ sortedData!: Functionality[];
   }
 
   deleteFunctionality(functionality:Functionality){
-    this.functionalityService.deleteFunctionality(functionality.ID).subscribe(()=>{
+    if(this.devopsGuard.canActivate()){
+      this.functionalityService.deleteFunctionality(functionality.ID).subscribe(()=>{
       
-      this.sortedData = this.sortedData.filter(f=>f.ID!==functionality.ID)
-    })
+        this.sortedData = this.sortedData.filter(f=>f.ID!==functionality.ID)
+      })
+    }
+  
   }
 
   viewFunctionalityDetails(functionality:Functionality)

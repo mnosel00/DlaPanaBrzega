@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from '../interfaces/project.interface';
 import { ProjectService } from '../services/project.service';
 import { Router } from '@angular/router';
+import { DevopsGuard } from '../guards/devops.guard';
 
 @Component({
   selector: 'app-project-list-component',
@@ -15,6 +16,7 @@ export class ProjectListComponentComponent implements OnInit {
   constructor(
     private projectService: ProjectService, 
     private router: Router,
+    private devopsGuard:DevopsGuard
     )
      { }
 
@@ -38,9 +40,13 @@ export class ProjectListComponentComponent implements OnInit {
   }
 
   deleteProject(project: Project) {
-    this.projectService.deleteProject(project.ID).subscribe(() => {
-      this.projects = this.projects.filter(p => p.ID !== project.ID);
-    });
+    if(this.devopsGuard.canActivate())
+    {
+      this.projectService.deleteProject(project.ID).subscribe(() => {
+        this.projects = this.projects.filter(p => p.ID !== project.ID);
+      });
+    }
+   
   }
 
   viewProjectDetails(project: Project) {
