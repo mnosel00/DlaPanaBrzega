@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { LogiFormComponentComponent } from '../logi-form-component/logi-form-component.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { User } from '../interfaces/user.interface';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,21 +14,44 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class NavbarComponent implements OnInit {
   loggedInUser: string | null = null;
   isLoggedIn: boolean = true
+  userOptions: User[] =[]
+  isAdmin: boolean = false
 
   constructor(
     private router: Router,
-    public dialog: MatDialog,private snackBar: MatSnackBar){}
+    private userService:UserService,
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar)
+    {
+      this.userService.getUsers().subscribe((users:User[])=>{
+        this.userOptions = users
+      })
+    }
 
   ngOnInit(): void 
   {
     const loggedInUser = localStorage.getItem('loggedInUser');
     console.log(loggedInUser)
-    if (loggedInUser) {
+
+    if (loggedInUser) 
+    {
       this.isLoggedIn = false;
       this.loggedInUser = loggedInUser;
     }
+
+      const foundUser = this.userOptions.find(u=>u.login === this.loggedInUser)
+
+    if(foundUser?.role==='Admin')
+    {
+        this.isAdmin=true
+    }
+
   }
 
+  goToUserList()
+  {
+    this.router.navigate(['/users/list'])
+  }
   login()
   {
     const dialogRef = this.dialog.open(LogiFormComponentComponent, {

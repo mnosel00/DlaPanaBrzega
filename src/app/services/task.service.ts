@@ -75,8 +75,8 @@ import { Observable, of, throwError } from "rxjs";
         }
       }
   
-      deleteTask(taskName: string): Observable<boolean>{
-        const index = this.tasks.findIndex(t=>t.name === taskName);
+      deleteTask(ID: string): Observable<boolean>{
+        const index = this.tasks.findIndex(t=>t.ID === ID);
   
         if (index !== -1) 
         {

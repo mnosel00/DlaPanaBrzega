@@ -4,6 +4,9 @@
     <li *ngIf="isLoggedIn; else loggedUser">
       <button (click)="login()">Zaloguj</button>
     </li>
+    <li *ngIf="isAdmin">
+      <button (click)="goToUserList()">Zarzadzanie użytkownikami</button>
+    </li>
     <ng-template #loggedUser>
       <li>
         <span>Zalogowany jako: {{ loggedInUser }}</span>

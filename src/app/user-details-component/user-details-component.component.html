@@ -30,7 +30,10 @@
     *ngFor="let task of taskAssigned; let i = index"
     class="hover-cursor"
   >
-    {{ i + 1 }}. {{ task.name }}
+    <span>{{ i + 1 }}. {{ task.name }}</span>
+    <button mat-icon-button color="warn" (click)="deleteTask(task)">
+      <mat-icon>delete</mat-icon>
+    </button>
   </mat-list-item>
 </mat-list>
 
@@ -40,6 +43,9 @@
     *ngFor="let task of taskDone; let i = index"
     class="hover-cursor"
   >
-    {{ i + 1 }}. {{ task.name }}
+    <span>{{ i + 1 }}. {{ task.name }}</span>
+    <button mat-icon-button color="warn" (click)="deleteTask(task)">
+      <mat-icon>delete</mat-icon>
+    </button>
   </mat-list-item>
 </mat-list>

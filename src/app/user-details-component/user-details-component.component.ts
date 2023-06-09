@@ -70,4 +70,13 @@ export class UserDetailsComponentComponent implements OnInit {
   {
     this.taskDone = this.taskOptions.filter(task=> task.assignedUser?.login === this.userLogin && task.state === 'Done')
   }
+
+  deleteTask(task: Task) {
+    this.taskService.deleteTask(task.ID).subscribe(()=>{
+      this.taskOptions = this.taskOptions.filter(t=>t.ID !== task.ID)
+    })
+    this.getTaskAssigned()
+    this.getTaskDone()
+  }
+  
 }
