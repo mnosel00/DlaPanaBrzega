@@ -14,6 +14,7 @@ import { ActualProjectDetailsComponentComponent } from './actual-project-details
 import { ActualProjectEditFunctionalityComponent } from './actual-project-edit-functionality/actual-project-edit-functionality.component';
 import { TaskDetailsComponentComponent } from './task-details-component/task-details-component.component';
 import { UserDetailsComponentComponent } from './user-details-component/user-details-component.component';
+import { AdminPanelComponentComponent } from './admin-panel-component/admin-panel-component.component';
 
 
 
@@ -33,6 +34,9 @@ const routes: Routes = [
   },
   {
     path: "projects/list/:id/edit",component:ActualProjectEditFunctionalityComponent
+  },
+  {
+    path: "users/list", component:AdminPanelComponentComponent 
   },
   {path: "user/:id/details",component: UserDetailsComponentComponent},
   {path:"projects/:id/edit",component:EditProjectComponentComponent},

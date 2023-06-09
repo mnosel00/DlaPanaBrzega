@@ -64,8 +64,8 @@ export class UserService {
         }
     }
 
-    deleteUser(userLogin: string): Observable<boolean>{
-        const index = this.users.findIndex(u=>u.login === userLogin);
+    deleteUser(ID: string): Observable<boolean>{
+        const index = this.users.findIndex(u=>u.ID === ID);
   
         if (index !== -1) 
         {

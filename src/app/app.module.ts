@@ -43,6 +43,8 @@ import { LogiFormComponentComponent } from './logi-form-component/logi-form-comp
 import { MatDialogModule } from '@angular/material/dialog';
 import { UserDetailsComponentComponent } from './user-details-component/user-details-component.component';
 import { DialogComponentComponent } from './dialog-component/dialog-component.component';
+import { AdminPanelComponentComponent } from './admin-panel-component/admin-panel-component.component';
+import { AppEditUserDialogComponent } from './app-edit-user-dialog/app-edit-user-dialog.component';
 
 
 
@@ -69,6 +71,8 @@ import { DialogComponentComponent } from './dialog-component/dialog-component.co
     LogiFormComponentComponent,
     UserDetailsComponentComponent,
     DialogComponentComponent,
+    AdminPanelComponentComponent,
+    AppEditUserDialogComponent,
 
   ],
   imports: [ 
