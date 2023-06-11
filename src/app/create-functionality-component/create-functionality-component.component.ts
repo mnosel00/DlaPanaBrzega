@@ -8,6 +8,8 @@ import { Functionality } from '../interfaces/functionality.interface';
 import { FunctionalityService } from '../services/functionality.service';
 import { User } from '../interfaces/user.interface';
 import { UserService } from '../services/user.service';
+import { format } from 'date-fns';
+
 
 @Component({
   selector: 'app-create-functionality-component',
@@ -19,6 +21,7 @@ export class CreateFunctionalityComponentComponent implements OnInit {
   functionalityForm! : FormGroup;
   projectOptions! : Project[];
   ownerOptions! : User[];
+  addedDateCustom : any 
   
 
   constructor(
@@ -45,8 +48,9 @@ export class CreateFunctionalityComponentComponent implements OnInit {
       })
 
       const currentDate = new Date().toISOString().split('T')[0];
-      const addedDateControl = new FormControl({ value: currentDate, disabled: true });
+      this.addedDateCustom = new FormControl({ value: currentDate, disabled: true });
 
+      console.log(currentDate)
 
       this.functionalityForm = this.formBuilder.group({
         name: ['', Validators.required],
@@ -55,7 +59,7 @@ export class CreateFunctionalityComponentComponent implements OnInit {
         projectName: ['', Validators.required], 
         owner: ['', Validators.required],
         status: [WorkStatus.Todo, Validators.required],
-        addedDate: addedDateControl,
+        addedDate: this.addedDateCustom,
         startDate: [''],
         endDate: [''],
         timeSpent: ['']
@@ -64,7 +68,6 @@ export class CreateFunctionalityComponentComponent implements OnInit {
     }
 
     createFunctionality(){
-      console.log("aaa")
       if(this.functionalityForm.invalid)
       {
         return console.log("invalid")
@@ -75,7 +78,6 @@ export class CreateFunctionalityComponentComponent implements OnInit {
       const projectToBeSelected = this.projectOptions.find(project=> project.name === selectedProjectName.name)
 
       const selectedOwnerLogin = this.functionalityForm.value.owner;
-      console.log(selectedOwnerLogin)
       const ownerToBeSelected = this.ownerOptions.find(user=> user.login===selectedOwnerLogin.login)
       
 
@@ -84,9 +86,8 @@ export class CreateFunctionalityComponentComponent implements OnInit {
         return;
       }
 
-      const currentDate = new Date().toISOString().split('T')[0];
-      const addedDateControl = new FormControl({ value: currentDate, disabled: true });
-      const addedDateValue = addedDateControl.value !== null ? addedDateControl.value : currentDate;
+     const date = new Date()
+     const formattedDate = format(date,'dd.mm.yyyy')
 
 
 
@@ -98,14 +99,14 @@ export class CreateFunctionalityComponentComponent implements OnInit {
         project: projectToBeSelected,
         owner: ownerToBeSelected,
         status: this.functionalityForm.value.status,
-        addedDate: new Date(addedDateValue),
+        addedDate: date,
         startDate: this.functionalityForm.value.startDate || undefined,
         endDate: this.functionalityForm.value.endDate || undefined,
       };
 
+     
       this.functionalityService.createFunctionality(functionality).subscribe(
         () => {
-          console.log(functionality)
           this.snackBar.open('Funkcjonalność została utworzona', 'OK', {
             duration: 2000
           });

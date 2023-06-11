@@ -73,7 +73,7 @@ export class ActualProjectDetailsComponentComponent implements OnInit {
   }
 
   checkStatusDone(functionality : Functionality)
-  {
+  { 
     const checkIfAnyIsDoing = this.tasksBelongsToFunctionality.find(f=>f.state === WorkStatus.Done )
 
     if(checkIfAnyIsDoing){
