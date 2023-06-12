@@ -8,6 +8,7 @@ import { TaskService } from '../services/task.service';
 import { Task } from '../interfaces/task.interface';
 import { User } from '../interfaces/user.interface';
 import { WorkStatus } from '../enums/workStatus.enum';
+import { ProjectService } from '../services/project.service';
 
 @Component({
   selector: 'app-actual-project-details-component',
@@ -23,7 +24,10 @@ export class ActualProjectDetailsComponentComponent implements OnInit {
  tasksBelongsToFunctionality: Task[] = []
  tasksToDo: Task[] = []
  tasksDoing: Task[] = []
+ newProject!: any
  tasksDone: Task[] = []
+ projectID!: string
+ projectsOptions: Project[] =[]
  workingUsers: User[]= []
  functionalityID!: string
  isLoading: boolean = false;
@@ -32,9 +36,14 @@ export class ActualProjectDetailsComponentComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private functionalityService: FunctionalityService,
     private router: Router,
-    private taskService: TaskService){
+    private taskService: TaskService,
+    private projectService: ProjectService){
       this.taskService.getTasks().subscribe((tasks:Task[])=>{
         this.allTasks = tasks
+      })
+
+      this.projectService.getProjects().subscribe((projects:Project[])=>{
+        this.projectsOptions = projects
       })
     }
 
@@ -85,6 +94,7 @@ export class ActualProjectDetailsComponentComponent implements OnInit {
   {
     this.router.navigate(['/task/create'])
   }
+
   getSingleFunctionality(ID:string){
     this.isLoading = true;
     this.functionalityService
@@ -100,6 +110,9 @@ export class ActualProjectDetailsComponentComponent implements OnInit {
       )
       .subscribe(functionality => {
         this.functionality = functionality as Functionality;
+        this.projectID = this.functionality.project.ID
+        this.newProject = this.projectsOptions.find(p=>p.ID === this.projectID)
+        this.functionality.project = this.newProject
         this.functionalities.push(this.functionality)
       });
   }
