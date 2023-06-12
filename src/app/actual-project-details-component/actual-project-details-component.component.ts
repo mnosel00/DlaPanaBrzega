@@ -133,7 +133,11 @@ export class ActualProjectDetailsComponentComponent implements OnInit {
     this.tasksBelongsToFunctionality.forEach(task=>{
       if(task.assignedUser && !this.workingUsers.includes(task.assignedUser))
       {
-        this.workingUsers.push(task.assignedUser)
+
+        const isUserAlreadyAdded = this.workingUsers.some(user => user === task.assignedUser);
+      if (!isUserAlreadyAdded) {
+        this.workingUsers.push(task.assignedUser);
+      }
       }
     })
   }
